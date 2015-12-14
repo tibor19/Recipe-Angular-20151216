@@ -1,8 +1,8 @@
 (function(angular, recipe){
-        var module = angular.module('recipeApp', []);
-        module.controller('RecipeController', function($scope){
+        var app = angular.module('recipeApp');
+        app.controller('RecipeController', ['$scope', function($scope){
                 $scope.recipe = recipe;        
-        });
+        }]);
         
         
  
