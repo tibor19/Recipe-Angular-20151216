@@ -1,6 +1,6 @@
 ﻿var recipe = {
     "recipeID": 1,
-    "name": "Fish sticks and Rice",
+    "name": "Fish sticks and Rice data",
     "price": 2.0,
     "time": 20,
     "image": "fishsticks-mine",
