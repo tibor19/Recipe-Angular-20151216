@@ -4,7 +4,22 @@
     <title>The spaghetti code files</title>
     <link href="content/app.css" rel="stylesheet" />
 </head>
-<body>
+<body ng-app>
+    
+    <div ng-init="myVar=20"></div>
+    
+    <h1>
+    {{myVar}}<br/>
+    
+    <input type="text" ng-model="myVar" />
+    <br />
+    
+    <div ng-bind="myVar" ></div>
+    </h1>
+    
+    <select ng-model="myVar" ng-options="c.id as c.name for c in window.countries" >
+    </select>
+    
     <div class="container">
 
         <header>
@@ -66,5 +81,16 @@
             </p>
         </footer>
     </div>
+    <script>
+        window.countries = [
+            {id : 1, name:"Romania"},
+            {id : 2, name:"UK"},
+            {id : 3, name:"France"}
+        ];
+        
+    </script>
+    <script src="lib/angular/angular.js"></script>
+    
+
 </body>
 </html>
