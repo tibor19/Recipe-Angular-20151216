@@ -1,0 +1,19 @@
+{
+  "name": "spa-primer-angular",
+  "description": "A starter project for the SPA primer with AngularJS",
+  "version": "1.0.0",
+  "homepage": "https://github.com/tibor19/Recipe-Angular-20151216",
+  "license": "MIT",
+  "authors" : [{ "name": "Tiberiu Covaci", "email": "tibi@covaci.se" }],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tibor19/Recipe-Angular-20151216.git"
+  },
+  "private": false,
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-route": "1.4.x",
+    "angular-resource": "1.4.x",
+    "angular-mocks": "1.4.x"
+  }
+}
