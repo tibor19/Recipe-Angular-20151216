@@ -1,11 +1,13 @@
-(function(angular, recipe){
+(function(angular){
         var app = angular.module('recipeApp');
-        app.controller('RecipeController', ['$scope', function($scope){
-                $scope.recipe = recipe;        
-        }]);
-        
-        
+        app.controller('RecipeController', 
+                ['$scope', 'recipeFactory', 
+                        function($scope, recipeService){
+                                recipeService.getRecipe().then(function(data){
+                                   $scope.recipe = data;     
+                                });        
+                        }]);
  
-})(angular, recipe);
+})(angular);
 
 
