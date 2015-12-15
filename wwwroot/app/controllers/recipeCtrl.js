@@ -3,9 +3,7 @@
         app.controller('RecipeController', 
                 ['$scope', 'recipeService', 
                         function($scope, recipeService){
-                                recipeService.getRecipe().then(function(data){
-                                   $scope.recipe = data;     
-                                });        
+                                $scope.recipe = recipeService.getRecipe(1);
                         }]);
  
 })(angular);

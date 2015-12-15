@@ -2,16 +2,20 @@
 		var app = angular.module('recipeApp');
 		
 		app.service('recipeService', ['$resource', function($resource){
-			var resource = $resource('/data/recipe.json');
+			var resource = $resource('http://recipewebapi.azurewebsites.net/api/Recipes/:id', 
+			{
+				id: '@id'
+			}, {
+				update: {
+					method: 'PUT'
+				}
+			});
 			
-			this.getRecipe = function(){
-				var result = resource.get();
-				console.log(result);
-				return result.$promise;
+			this.getRecipe = function(id){
+				return resource.get({id: id}); 
 			}
-			this.getRecipes = function(){
-				return resource.query();
-			}
+
+			this.getRecipes = resource.query;
 			
 		}])
 })(angular);
