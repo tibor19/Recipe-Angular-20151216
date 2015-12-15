@@ -1,6 +1,7 @@
-﻿<article ng-controller="RecipeController">
-    <div ng-show="recipe.$resolved">
+﻿<article>
+    <div ng-show="recipe.$resolved && !isEditing">
         <h2 ng-bind="recipe.name"></h2>
+        <button ng-click="edit()">Edit</button>
         <div class="box">
             <div class="rightboxcontent">
                 <table>
@@ -26,5 +27,29 @@
         <ol>
             <li ng-repeat="instruction in recipe.recipeInstructions" ng-bind="instruction.instructionText"></li>
         </ol>
+    </div>
+
+    <div ng-show="recipe.$resolved && isEditing">
+        <ng-form name="recipeForm">
+            <div>
+                <label>Name:</label>
+                <input type="text" name="name" 
+                    ng-model="recipe.name" 
+                    ng-required="true" 
+                    ng-minlength="2" 
+                    ng-maxlength="30" />
+                <span ng-show="recipeForm.name.$error.required">
+                    The name is required
+                </span>
+                <span ng-show="recipeForm.name.$error.minlength">
+                    The name is too short
+                </span>
+                <span ng-show="recipeForm.name.$error.maxlength">
+                    The name is too long
+                </span>
+            </div>
+            <button ng-click="save()" ng-disabled="recipeForm.$pristine || recipeForm.$invalid">Save</button> 
+            <button ng-click="reset()">Reset</button> 
+        </ng-form>
     </div>
 </article>

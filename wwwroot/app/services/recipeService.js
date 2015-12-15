@@ -17,5 +17,11 @@
 
 			this.getRecipes = resource.query;
 			
+		    this.updateRecipe = function (recipe){
+				return resource.update({id: recipe.recipeID}, recipe).$promise;
+			}
+			
+
+			
 		}])
 })(angular);

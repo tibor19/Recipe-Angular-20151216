@@ -15,7 +15,10 @@
 
         <nav ng-include="'app/templates/nav.html'"></nav>
         
-        <div ng-include="'app/templates/recipe.html'"></div>
+        <ng-view>
+            My message will go away!    
+        </ng-view>
+        <div ng-include=""></div>
 
         <footer ng-include="'app/templates/footer.html'"></footer>
         
@@ -23,8 +26,10 @@
     
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
     <script src="app/app.js"></script>
     <script src="app/controllers/recipeCtrl.js"></script>
+    <script src="app/controllers/weeklyMenuCtrl.js"></script>
     <script src="app/services/recipeValue.js"></script>
     <script src="app/services/recipesValue.js"></script>
     <script src="app/services/recipeService.js"></script>
