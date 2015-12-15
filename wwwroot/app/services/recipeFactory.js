@@ -1,18 +1,23 @@
 (function(angular){
 		var app = angular.module('recipeApp');
 		
-		app.factory('recipeFactory', ['$q','recipeValue', 'recipesValue', function($q,recipeValue, recipesValue){
+		app.factory('recipeFactory', ['$http', function($http){
 			
-			function getRecipe(){
+			function getRecipe(id){
 				
-				return $q.when(recipeValue);
+				return $http.get('/data/recipe.json').
+					then(function(httpResponse){
+						return httpResponse.data;
+					});
 			}
 			function getRecipes(){
-				return $q.when(recipesValue);
+				return $http.get('/data/recipies.json').
+					then(function(httpResponse){
+						return httpResponse.data;
+					});
 			}
 			
 			var returnObject ={
-				value : recipeValue,
 				getRecipe:  getRecipe,
 				getRecipes: getRecipes
 			} 
