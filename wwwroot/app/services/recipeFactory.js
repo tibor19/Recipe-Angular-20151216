@@ -8,7 +8,7 @@
 				return $q.when(recipeValue);
 			}
 			function getRecipes(){
-				return $q.when(recipeValue);
+				return $q.when(recipesValue);
 			}
 			
 			var returnObject ={
