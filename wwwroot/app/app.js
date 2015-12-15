@@ -1,7 +1,6 @@
 (function(angular){
         
-        angular.module('recipeApp.weeklyMenu', []);
-        var app = angular.module('recipeApp', ['recipeApp.weeklyMenu']);
+        var app = angular.module('recipeApp', ['ngResource']);
         
         app.config(['$logProvider', function($logProvider){
                 $logProvider.debugEnabled(true);

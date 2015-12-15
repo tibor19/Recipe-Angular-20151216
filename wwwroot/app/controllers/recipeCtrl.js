@@ -1,7 +1,7 @@
 (function(angular){
         var app = angular.module('recipeApp');
         app.controller('RecipeController', 
-                ['$scope', 'recipeFactory', 
+                ['$scope', 'recipeService', 
                         function($scope, recipeService){
                                 recipeService.getRecipe().then(function(data){
                                    $scope.recipe = data;     

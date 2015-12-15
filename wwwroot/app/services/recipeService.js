@@ -1,13 +1,16 @@
 (function(angular){
 		var app = angular.module('recipeApp');
 		
-		app.service('recipeService', ['recipeValue', 'recipesValue', function(recipeValue, recipesValue){
+		app.service('recipeService', ['$resource', function($resource){
+			var resource = $resource('/data/recipe.json');
 			
 			this.getRecipe = function(){
-				return recipeValue;
+				var result = resource.get();
+				console.log(result);
+				return result.$promise;
 			}
 			this.getRecipes = function(){
-				return recipesValue;
+				return resource.query();
 			}
 			
 		}])
