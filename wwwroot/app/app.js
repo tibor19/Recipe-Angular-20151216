@@ -6,7 +6,7 @@
                 $logProvider.debugEnabled(true);
         }]);
         
-        app.config(['$routeProvider', function($routeProvider){
+        app.config(['$routeProvider', '$filterProvider', function($routeProvider, $filterProvider){
                 
                 function redirectFn(){
                         return '/recipe/' + (Math.round(Math.random()*8) + 1);                        
@@ -39,9 +39,10 @@
                 $routeProvider.when('/recipe', {redirectTo: redirectFn });
                 
                 $routeProvider.otherwise({redirectTo: '/'});
+                console.log($filterProvider);
         }]);
         
-        app.run(['$rootScope', function($rootScope){
+        app.run(['$rootScope', '$filter', function($rootScope, $filter){
                 $rootScope.myVal = 10;
         }]);
  
