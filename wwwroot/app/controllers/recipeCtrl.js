@@ -1,7 +1,7 @@
 (function(angular){
         var app = angular.module('recipeApp');
         app.controller('RecipeController', 
-                ['$scope', '$routeParams', 'recipeService', 
+                ['$scope', '$routeParams', 'recipeSvc', 
         function($scope, $routeParams, recipeService){
                 $scope.recipe = recipeService.getRecipe($routeParams.id || 1);
                 

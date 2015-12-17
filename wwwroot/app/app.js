@@ -6,7 +6,7 @@
                 $logProvider.debugEnabled(true);
         }]);
         
-        app.config(['$routeProvider', '$filterProvider', function($routeProvider, $filterProvider){
+        app.config(['$routeProvider', 'config', 'recipeSvcProvider', function($routeProvider, config, recipeSvcProvider){
                 
                 function redirectFn(){
                         return '/recipe/' + (Math.round(Math.random()*8) + 1);                        
@@ -39,11 +39,37 @@
                 $routeProvider.when('/recipe', {redirectTo: redirectFn });
                 
                 $routeProvider.otherwise({redirectTo: '/'});
-                console.log($filterProvider);
+
+                recipeSvcProvider.config(config.remoteServer);
         }]);
         
-        app.run(['$rootScope', '$filter', function($rootScope, $filter){
+        app.run(['$rootScope', '$filter', 'recipeValue', 'config', function($rootScope, $filter, recipeValue, config){
                 $rootScope.myVal = 10;
+                
+                var filterF = $filter('image');
+                console.log(filterF('abc'));
+                
+                console.log('First run', recipeValue);
+                
+                console.log('Run: ', config);
+        }]);
+        app.run(['$injector', function($injector){
+               
+                $injector.invoke(function(recipeValue){
+                        console.log('Injector run no deps',recipeValue);       
+                });
+                
+                $injector.invoke(['recipeValue', function(recipeValue){
+                        console.log('Injector run',recipeValue);       
+                }]);
+                
+                function injectable(recipeValue){
+                        console.log('Injectabel function',recipeValue);       
+                }
+                
+                injectable.$inject = ['recipeValue'];
+                
+                $injector.invoke(injectable);
         }]);
  
 })(angular);

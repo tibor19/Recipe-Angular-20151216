@@ -1,8 +1,8 @@
 (function(angular){
 		var app = angular.module('recipeApp');
 		
-		app.service('recipeService', ['$resource', function($resource){
-			var resource = $resource('http://recipewebapi.azurewebsites.net/api/Recipes/:id', 
+		app.service('recipeService', ['$resource', 'config', function($resource, config){
+			var resource = $resource(config.remoteServer +'/:id', 
 			{
 				id: '@id'
 			}, {
@@ -20,8 +20,5 @@
 		    this.updateRecipe = function (recipe){
 				return resource.update({id: recipe.recipeID}, recipe).$promise;
 			}
-			
-
-			
 		}])
 })(angular);
