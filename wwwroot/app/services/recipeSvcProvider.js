@@ -26,14 +26,14 @@
 			}
 
 			return {
-				$get : function($resource) {
+				$get : ['$resource', function($resource) {
 					if(remoteServer){
 						return new RecipeSvc($resource);
 					}
 					else{
 						throw new Error('You need to config the service first!');
 					}
-				},
+				}],
 				config: function(server){
 					remoteServer = server;
 				}

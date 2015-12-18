@@ -55,16 +55,22 @@
         }]);
         app.run(['$injector', function($injector){
                
-                $injector.invoke(function(recipeValue){
-                        console.log('Injector run no deps',recipeValue);       
-                });
+               
+               var func = function(a, b, c){
+                       
+               }
+               
+               console.log(func);
+                // $injector.invoke(function(recipeValue){
+                //         console.log('Injector run no deps',recipeValue);       
+                // });
                 
                 $injector.invoke(['recipeValue', function(recipeValue){
                         console.log('Injector run',recipeValue);       
                 }]);
                 
                 function injectable(recipeValue){
-                        console.log('Injectabel function',recipeValue);       
+                        console.log('Injectable function',recipeValue);       
                 }
                 
                 injectable.$inject = ['recipeValue'];

@@ -4,7 +4,7 @@
     <title>The spaghetti code files</title>
     <link href="content/app.css" rel="stylesheet" />
 </head>
-<body ng-app="recipeApp">
+<body ng-app="recipeApp" ng-strict-di>
    
     <div class="container">
 
@@ -22,6 +22,17 @@
         <footer ng-include="'app/templates/footer.html'"></footer>
         
     </div>
+    
+    <script type="text/ng-template" id="app/templates/footer.html">
+    <p>
+	<a href="#/">Home</a> |
+	<a href="#/search">Search Recipes</a> |
+	<a href="#/recipe">I feel lucky</a> |
+	<a href="#/weeklyMenu">Weekly Menu</a> |
+	<a href="#/toprecipes">Top Recipes</a> |
+	<a href="#/contactus">Contact Us</a>
+</p>
+    </script>
     
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-resource/angular-resource.js"></script>
